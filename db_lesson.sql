@@ -1,3 +1,4 @@
+.データベース解答
 Q1
 CREATE TABLE departments (
     ->     department_id int unsigned NOT NULL PRIMARY KEY auto_increment,
