@@ -31,6 +31,11 @@ CREATE TABLE people (
     -> updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     -> );
 
+・カラムの追加方法
+
+    ALTER TABLE people
+    -> ADD department_id INT UNSIGNED AFTER email;
+
 
     mysql> DESC people;
 +---------------+------------------+------+-----+-------------------+-----------------------------------------------+
@@ -105,7 +110,7 @@ SELECT * FROM people;
 
 
 
-INSERT INTO reports (person_id, report_date, content, created_at)
+INSERT INTO reports (person_id, content, created_at)
     -> VALUES
     -> (1, '2025-03-21', '今日はデータベースの学習をした', '2025-03-27'),
     -> (2, '2025-03-21', 'クライアント対応のための資料を作成しました', '2025-03-27'),
@@ -158,6 +163,27 @@ SELECT * FROM people;
 10 rows in set (0.01 sec)
 
 
+・存在する部署のIDが割り振り。WHEREを使った条件付きで指定。
+
+UPDATE people
+    -> SET department_id = 1
+    -> WHERE person_id = 1;
+
+UPDATE people
+    -> SET department_id = 2
+    -> WHERE person_id = 4;
+
+UPDATE people
+    -> SET department_id = 3
+    -> WHERE person_id = 8;
+
+UPDATE people
+    -> SET department_id = 4
+    -> WHERE person_id = 9;
+
+UPDATE people
+    -> SET department_id = 5
+    -> WHERE person_id = 10;
 
 Q5
 SELECT name,age
